@@ -75,11 +75,11 @@ Decision Workflow (Plan → Execute → Replan)
 
 Smart Task uses a structured decision workflow orchestrated with **LangGraph**:
 
-1.  **Plan**Interprets the prompt and identifies required decision signals and inputs.
+1.  **Plan**: Interprets the prompt and identifies required decision signals and inputs.
     
-2.  **Execute**Gathers context using tools (pipeline metadata, changed files, environment details, custom sources).
+2.  **Execute**: Gathers context using tools (pipeline metadata, changed files, environment details, custom sources).
     
-3.  **Replan**Uses an LLM to reason over the gathered signals, correct assumptions if needed, and converge on stable decisions.
+3.  **Replan**: Uses an LLM to reason over the gathered signals, correct assumptions if needed, and converge on stable decisions.
     
 
 The final output includes:
