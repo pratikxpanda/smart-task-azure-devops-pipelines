@@ -31,49 +31,17 @@ Smart Task centralizes this logic into a reusable **decision support layer**, wh
 
 ### Key Characteristics
 
-- **Decision support only**  
-  Smart Task never executes commands or performs pipeline actions.
+- **Decision support only**: Smart Task never executes commands or performs pipeline actions.
 
-- **Explicit decision signals**  
-  Decisions are emitted as named pipeline variables.
+- **Explicit decision signals**: Decisions are emitted as named pipeline variables.
 
-- **Deterministic by design**  
-  Pipelines remain predictable when required decision signals are explicitly defined.
+- **Deterministic by design**: Pipelines remain predictable when required decision signals are explicitly defined.
 
-- **Transparent outputs**  
-  Decisions include confidence and reasoning to support review and trust.
+- **Transparent outputs**: Decisions include confidence and reasoning to support review and trust.
 
-- **Human-in-the-loop friendly**  
-  Pipelines decide how to act on decisions using native Azure DevOps mechanisms.
+- **Human-in-the-loop friendly**: Pipelines decide how to act on decisions using native Azure DevOps mechanisms.
 
-- **Extensible context model**  
-  Context can be enriched via built-in tools and additional information provided from organizational knowledge sources.
-
-### Important: Deterministic Decision Signals
-
-To ensure **deterministic and predictable behavior**, the **required decision signals must be explicitly specified in the prompt**.
-
-Smart Task does **not infer** which signals the pipeline depends on.
-
-If the prompt is open-ended, the output signals may vary across runs.
-
-#### Recommended pattern for prompt
-
-```text
-Determine the following decision signals:
-- SIGNAL_1
-- SIGNAL_2
-- CONFIDENCE
-- REASONING
-```
-
-This keeps responsibility clear:
-
-*   The **prompt defines required signals**
-    
-*   The **decision engine resolves them**
-    
-*   The **pipeline consumes them**
+- **Extensible context model**: Context can be enriched via built-in tools and additional information provided from external sources.
 
 Architecture
 ------------
@@ -121,6 +89,33 @@ The final output includes:
 *   Confidence levels
     
 *   Reasoning
+
+Important: Deterministic Decision Signals
+-----------------------------------------
+
+To ensure **deterministic and predictable behavior**, the **required decision signals must be explicitly specified in the prompt**.
+
+Smart Task does **not infer** which signals the pipeline depends on.
+
+If the prompt is open-ended, the output signals may vary across runs.
+
+### Recommended pattern for prompt
+
+```text
+Determine the following decision signals:
+- SIGNAL_1
+- SIGNAL_2
+- CONFIDENCE
+- REASONING
+```
+
+This keeps responsibility clear:
+
+*   The **prompt defines required signals**
+    
+*   The **decision engine resolves them**
+    
+*   The **pipeline consumes them**
 
 Human-in-the-Loop Design
 ------------------------
